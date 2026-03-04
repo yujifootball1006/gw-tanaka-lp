@@ -659,6 +659,69 @@
       transform: translateX(0);
     }
 
+    /* === Toggle/Accordion === */
+    .toggle-wrap { margin-top: 1rem; }
+    .toggle-btn {
+      width: 100%;
+      background: none;
+      border: 1px solid #e8e4dc;
+      padding: 0.7rem 1rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      color: #b2a184;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+      letter-spacing: 0.05em;
+    }
+    .toggle-btn:hover { background: rgba(178, 161, 132, 0.05); }
+    .toggle-btn .arrow {
+      transition: transform 0.3s;
+      font-size: 0.7rem;
+    }
+    .toggle-btn.open .arrow { transform: rotate(180deg); }
+    .toggle-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      border: 1px solid #e8e4dc;
+      border-top: none;
+    }
+    .toggle-content.open { max-height: 600px; }
+    .toggle-inner {
+      padding: 1.2rem 1rem;
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 2;
+    }
+    .toggle-inner ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toggle-inner ul li {
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .toggle-inner ul li::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #b2a184;
+      flex-shrink: 0;
+    }
+    .toggle-inner .note {
+      color: #999;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      padding-left: 0.7rem;
+    }
+
     /* === Responsive === */
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -887,28 +950,72 @@
         </p>
       </div>
 
-      <!-- 法人税務顧問 -->
+      <!-- ========== 法人税務顧問 ========== -->
       <h3 class="fade-in" style="text-align:center;font-size:1.3rem;font-weight:500;letter-spacing:0.1em;margin-bottom:0.5rem;color:#2a2a2a;">法人税務顧問</h3>
       <p class="fade-in" style="text-align:center;font-size:0.85rem;color:#b2a184;letter-spacing:0.15em;margin-bottom:2rem;">CORPORATE TAX ADVISORY</p>
-      <div class="price-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto 2rem;">
-        <!-- CFOサポート（プレミアム） -->
+      <div class="price-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 1050px; margin: 0 auto 2rem;">
+
+        <!-- CFOサポート -->
         <div class="price-card featured fade-in">
-          <div class="plan-name">PREMIUM</div>
+          <div class="plan-name">CFO SUPPORT</div>
           <h3>CFOサポート</h3>
           <div class="price-amount">
-            <span class="yen">&yen;49,800</span>
-            <span class="unit">/ 月</span>
+            <span class="yen">&yen;150,000</span>
+            <span class="unit">〜 / 月</span>
             <span class="tax">税込</span>
           </div>
-          <ul class="price-features">
-            <li>法人決算・税務申告</li>
-            <li>確定申告料：¥250,000（税込）</li>
-            <li>役員報酬の最適設計</li>
-            <li>財務戦略コンサルティング</li>
-            <li>個人資産運用の助言</li>
-            <li>融資・資金調達サポート</li>
-            <li>チャット・電話での随時相談</li>
-          </ul>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
+              <span>サービス詳細を見る</span><span class="arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <div class="toggle-inner">
+                <p style="margin-bottom:0.8rem;color:#2a2a2a;font-weight:500;">代表税理士が貴社のCFOとして動きます。</p>
+                <ul>
+                  <li>週次ミーティングに隔週出席</li>
+                  <li>資本政策のご提案</li>
+                  <li>2週間に1回2時間の経営会議</li>
+                  <li>オーダーメイドの節税提案</li>
+                  <li>融資実行支援</li>
+                  <li>IPO準備支援</li>
+                  <li>M&A実行支援</li>
+                  <li>税務調査対応</li>
+                </ul>
+                <p class="note">※ 決算申告料は別途</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- プレミアム -->
+        <div class="price-card fade-in">
+          <div class="plan-name">PREMIUM</div>
+          <h3>プレミアム</h3>
+          <div class="price-amount">
+            <span class="yen">&yen;79,800</span>
+            <span class="unit">〜 / 月</span>
+            <span class="tax">税込</span>
+          </div>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
+              <span>サービス詳細を見る</span><span class="arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <div class="toggle-inner">
+                <p style="margin-bottom:0.8rem;color:#2a2a2a;font-weight:500;">以下のサービスが含まれます。</p>
+                <ul>
+                  <li>毎月のfreee会計データチェック</li>
+                  <li>毎月1回の経営会議</li>
+                  <li>オーダーメイドの節税提案</li>
+                  <li>24時間365日の税務相談</li>
+                  <li>税務調査対応</li>
+                </ul>
+                <p class="note">※ 記帳代行料：別途20,000円/100仕訳</p>
+                <p class="note">※ 決算申告料：別途200,000円</p>
+                <p class="note">※ 消費税申告料：別途100,000円</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- スタンダード -->
@@ -916,40 +1023,132 @@
           <div class="plan-name">STANDARD</div>
           <h3>スタンダード</h3>
           <div class="price-amount">
-            <span class="yen">&yen;29,800</span>
-            <span class="unit">/ 月</span>
+            <span class="yen">&yen;49,800</span>
+            <span class="unit">〜 / 月</span>
             <span class="tax">税込</span>
           </div>
-          <ul class="price-features">
-            <li>法人決算・税務申告</li>
-            <li>確定申告料：¥120,000（税込）</li>
-            <li>記帳指導・経理サポート</li>
-            <li>節税対策の提案</li>
-            <li>チャット・電話での随時相談</li>
-          </ul>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
+              <span>サービス詳細を見る</span><span class="arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <div class="toggle-inner">
+                <p style="margin-bottom:0.8rem;color:#2a2a2a;font-weight:500;">以下のサービスが含まれます。</p>
+                <ul>
+                  <li>毎月のfreee会計データチェック</li>
+                  <li>四半期に1回の経営会議</li>
+                  <li>オーダーメイドの節税提案</li>
+                  <li>24時間365日の税務相談</li>
+                  <li>税務調査対応</li>
+                </ul>
+                <p class="note">※ 記帳代行料：別途20,000円/100仕訳</p>
+                <p class="note">※ 決算申告料：別途200,000円</p>
+                <p class="note">※ 消費税申告料：別途100,000円</p>
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
 
-      <!-- 1人社長税務顧問 -->
+      <!-- ========== 1人社長税務顧問 ========== -->
       <h3 class="fade-in" style="text-align:center;font-size:1.3rem;font-weight:500;letter-spacing:0.1em;margin:3.5rem 0 0.5rem;color:#2a2a2a;">1人社長税務顧問</h3>
       <p class="fade-in" style="text-align:center;font-size:0.85rem;color:#b2a184;letter-spacing:0.15em;margin-bottom:2rem;">SOLO CEO TAX ADVISORY</p>
-      <div class="price-grid" style="grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 2rem;">
-        <div class="price-card fade-in">
-          <div class="plan-name">MICRO CORPORATION</div>
-          <h3>マイクロ法人（1人社長）</h3>
+      <div class="price-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 1050px; margin: 0 auto 2rem;">
+
+        <!-- 1人社長 プレミアム -->
+        <div class="price-card featured fade-in">
+          <div class="plan-name">PREMIUM</div>
+          <h3>プレミアム</h3>
           <div class="price-amount">
             <span class="yen">&yen;39,800</span>
-            <span class="unit">/ 月</span>
+            <span class="unit">〜 / 月</span>
             <span class="tax">税込</span>
           </div>
-          <ul class="price-features">
-            <li>法人決算・税務申告</li>
-            <li>確定申告料：¥200,000（税込）</li>
-            <li>記帳指導・経理サポート</li>
-            <li>節税対策の提案</li>
-            <li>チャット・電話での随時相談</li>
-          </ul>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
+              <span>サービス詳細を見る</span><span class="arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <div class="toggle-inner">
+                <p style="margin-bottom:0.8rem;color:#2a2a2a;font-weight:500;">以下のサービスが含まれます。</p>
+                <ul>
+                  <li>毎月のfreee会計データチェック</li>
+                  <li>毎月1回の経営会議</li>
+                  <li>オーダーメイドの節税提案</li>
+                  <li>24時間365日の税務相談</li>
+                  <li>税務調査対応</li>
+                </ul>
+                <p class="note">※ 記帳代行料：別途20,000円/100仕訳</p>
+                <p class="note">※ 決算申告料：別途200,000円</p>
+                <p class="note">※ 消費税申告料：別途100,000円</p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 1人社長 スタンダード -->
+        <div class="price-card fade-in">
+          <div class="plan-name">STANDARD</div>
+          <h3>スタンダード</h3>
+          <div class="price-amount">
+            <span class="yen">&yen;29,800</span>
+            <span class="unit">〜 / 月</span>
+            <span class="tax">税込</span>
+          </div>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
+              <span>サービス詳細を見る</span><span class="arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <div class="toggle-inner">
+                <p style="margin-bottom:0.8rem;color:#2a2a2a;font-weight:500;">以下のサービスが含まれます。</p>
+                <ul>
+                  <li>毎月のfreee会計データチェック</li>
+                  <li>四半期に1回の経営会議</li>
+                  <li>オーダーメイドの節税提案</li>
+                  <li>24時間365日の税務相談</li>
+                  <li>税務調査対応</li>
+                </ul>
+                <p class="note">※ 記帳代行料：別途20,000円/100仕訳</p>
+                <p class="note">※ 決算申告料：別途200,000円</p>
+                <p class="note">※ 消費税申告料：別途100,000円</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1人社長 ミニマム -->
+        <div class="price-card fade-in">
+          <div class="plan-name">MINIMUM</div>
+          <h3>ミニマム</h3>
+          <div class="price-amount">
+            <span class="yen">&yen;19,800</span>
+            <span class="unit">〜 / 月</span>
+            <span class="tax">税込</span>
+          </div>
+          <div class="toggle-wrap">
+            <button class="toggle-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
+              <span>サービス詳細を見る</span><span class="arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <div class="toggle-inner">
+                <p style="margin-bottom:0.8rem;color:#2a2a2a;font-weight:500;">以下のサービスが含まれます。</p>
+                <ul>
+                  <li>毎月のfreee会計データチェック</li>
+                  <li>半年に1回の経営会議</li>
+                  <li>節税提案</li>
+                  <li>税務相談（チャット対応）</li>
+                  <li>税務調査対応</li>
+                </ul>
+                <p class="note">※ 記帳代行料：別途20,000円/100仕訳</p>
+                <p class="note">※ 決算申告料：別途150,000円</p>
+                <p class="note">※ 消費税申告料：別途100,000円</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- その他の料金 -->
